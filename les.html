@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      async function findIPData(ip = "5.2.55.76") {
+        const res = await fetch(`http://ip-api.com/json/${ip}`);
+        const data = await res.json();
+        document.getElementById(
+          "country"
+        ).innerHTML = `Страна: ${data.country}`;
+        document.getElementById("city").innerHTML = `Город: ${data.city}`;
+        document.getElementById("lat").innerHTML = `Широта: ${data.lat}`;
+        document.getElementById("lon").innerHTML = `Долгота: ${data.lon}`;
+        document.getElementById("zip").innerHTML = `Zip: ${data.zip}`;
+        document.getElementById("org").innerHTML = `Провайдер: ${data.isp}`;
+        // return data;
+      }
+    </script>
+  </head>
+  <body>
+    <p id="country">Страна</p>
+    <p id="city">Город</p>
+    <p id="lat">Широта</p>
+    <p id="lon">Долгота</p>
+    <p id="zip">Zip</p>
+    <p id="org">Провайдер:</p>
+    <button type="button" onclick="findIPData()">Получить данные</button>
+  </body>
+</html>
